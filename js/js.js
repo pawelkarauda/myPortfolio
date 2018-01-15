@@ -3,7 +3,7 @@
     'use strict';
 
     /* Zamykanie */
-    function ModalAddEventClosing(container, modal){
+    function ModalAddEventClosing(container, modal) {
         var exits = modal.querySelectorAll('.skills-modal-exit');
 
         for (let i = 0; i < exits.length; i++) {
@@ -17,11 +17,11 @@
 
 
     /* Otwieranie */
-    function ModalAddEventOpening(name){
-        var 
-            container = document.querySelector('.modal-'+ name +'-container'),
-            icon = document.querySelector('.skills-'+ name),
-            modal = document.querySelector('.skills-'+ name +'-modal');
+    function ModalAddEventOpening(name) {
+        var
+            container = document.querySelector('.modal-' + name + '-container'),
+            icon = document.querySelector('.skills-' + name),
+            modal = document.querySelector('.skills-' + name + '-modal');
 
         icon.addEventListener('click', function (e) {
             container.classList.add('fullScreen');
@@ -33,10 +33,10 @@
 
 
     ModalAddEventOpening('html'),
-    ModalAddEventOpening('sass'),
-    ModalAddEventOpening('js'),
-    ModalAddEventOpening('react');
-    
+        ModalAddEventOpening('sass'),
+        ModalAddEventOpening('js'),
+        ModalAddEventOpening('react');
+
 
     /* DRAGGING MODAL */
 
@@ -48,19 +48,6 @@
             pos4 = 0,
             element = document.querySelector(element_class);
 
-        
-        function dragMouseDown(e) {
-
-            /* ustal pozycje kursora */
-            pos3 = e.clientX; // pozycja od lewej
-            pos4 = e.clientY; // pozycja od gory            
-
-            /* myszka puszczona - zakoncz przenoszenie */
-            document.onmouseup = closeDragElement;
-
-            /* ruch myszki - przenies element */
-            document.onmousemove = elementDrag;
-        };
 
         function elementDrag(e) {
 
@@ -81,6 +68,19 @@
         function closeDragElement() {
             document.onmouseup = null;
             document.onmousemove = null;
+        };
+
+        function dragMouseDown(e) {
+
+            /* ustal pozycje kursora */
+            pos3 = e.clientX; // pozycja od lewej
+            pos4 = e.clientY; // pozycja od gory            
+
+            /* myszka puszczona - zakoncz przenoszenie */
+            document.onmouseup = closeDragElement;
+
+            /* ruch myszki - przenies element */
+            document.onmousemove = elementDrag;
         };
 
         /* Wywolaj sprawdzanie na wcisniecie myszki na naglowku */
