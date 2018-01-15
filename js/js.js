@@ -2,57 +2,43 @@
 
     'use strict';
 
+    /* Zamykanie */
+    function ModalAddEventClosing(container, modal){
+        var exits = modal.querySelectorAll('.skills-modal-exit');
 
-    function createModal(name){
+        for (let i = 0; i < exits.length; i++) {
+
+            exits[i].addEventListener('click', function (e) {
+                container.classList.remove('fullScreen');
+                modal.style.display = "none";
+            });
+        };
+    }
+
+
+    /* Otwieranie */
+    function ModalAddEventOpening(name){
         var 
-            modalContainer = document.querySelector('.modal-'+ name +'-container'),
+            container = document.querySelector('.modal-'+ name +'-container'),
             icon = document.querySelector('.skills-'+ name),
             modal = document.querySelector('.skills-'+ name +'-modal');
 
         icon.addEventListener('click', function (e) {
-            modalContainer.classList.add('fullScreen');
+            container.classList.add('fullScreen');
             modal.style.display = "block";
         });
 
-        return {
-            container: modalContainer,
-            modal: modal
-        };
+        ModalAddEventClosing(container, modal)
     }
 
-    const 
-        modalHtml =     createModal('html'),
-        modalSass =     createModal('sass'),
-        modalJs =       createModal('js'),
-        modalReact =    createModal('react');
 
-
-    /* Zamykanie */
-    const modalExits = document.querySelectorAll('.skills-modal-exit');
-
-    for (let i = 0; i < modalExits.length; i++) {
-
-        modalExits[i].addEventListener('click', function (e) {
-            modalHtml.container.classList.remove('fullScreen');
-            modalSass.container.classList.remove('fullScreen');
-            modalJs.container.classList.remove('fullScreen');
-            modalReact.container.classList.remove('fullScreen');
-
-            modalHtml.modal.style.display = "none";
-            modalSass.modal.style.display = "none";
-            modalJs.modal.style.display = "none";
-            modalReact.modal.style.display = "none";
-        });
-    };
-
+    ModalAddEventOpening('html'),
+    ModalAddEventOpening('sass'),
+    ModalAddEventOpening('js'),
+    ModalAddEventOpening('react');
+    
 
     /* DRAGGING MODAL */
-
-    dragModal('.skills-html-modal');
-    dragModal('.skills-sass-modal');
-    dragModal('.skills-js-modal');
-    dragModal('.skills-react-modal');
-
 
     function dragModal(element_class) {
         /* początkowe wartości na 0 */
@@ -63,12 +49,6 @@
             element = document.querySelector(element_class);
 
         
-
-        /* Wywolaj sprawdzanie na wcisniecie myszki na naglowku */
-        element.querySelector('.skills-modal-header').onmousedown = dragMouseDown;
-
-
-
         function dragMouseDown(e) {
 
             /* ustal pozycje kursora */
@@ -102,7 +82,15 @@
             document.onmouseup = null;
             document.onmousemove = null;
         };
+
+        /* Wywolaj sprawdzanie na wcisniecie myszki na naglowku */
+        element.querySelector('.skills-modal-header').onmousedown = dragMouseDown;
     };
 
+
+    dragModal('.skills-html-modal');
+    dragModal('.skills-sass-modal');
+    dragModal('.skills-js-modal');
+    dragModal('.skills-react-modal');
 
 })(document);
