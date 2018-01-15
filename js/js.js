@@ -3,83 +3,66 @@
     'use strict';
 
 
+    function createModal(name){
+        var 
+            modalContainer = document.querySelector('.modal-'+ name +'-container'),
+            icon = document.querySelector('.skills-'+ name),
+            modal = document.querySelector('.skills-'+ name +'-modal');
+
+        icon.addEventListener('click', function (e) {
+            modalContainer.classList.add('fullScreen');
+            modal.style.display = "block";
+        });
+
+        return {
+            container: modalContainer,
+            modal: modal
+        };
+    }
+
+    const 
+        modalHtml =     createModal('html'),
+        modalSass =     createModal('sass'),
+        modalJs =       createModal('js'),
+        modalReact =    createModal('react');
+
+
     /* Zamykanie */
     const modalExits = document.querySelectorAll('.skills-modal-exit');
 
     for (let i = 0; i < modalExits.length; i++) {
 
         modalExits[i].addEventListener('click', function (e) {
-            modalHtmlContainer.classList.remove('fullScreen');
-            modalSassContainer.classList.remove('fullScreen');
-            modalJsContainer.classList.remove('fullScreen');
-            modalReactContainer.classList.remove('fullScreen');
-            htmlModal.style.display = "none";
-            sassModal.style.display = "none";
-            jsModal.style.display = "none";
-            reactModal.style.display = "none";
+            modalHtml.container.classList.remove('fullScreen');
+            modalSass.container.classList.remove('fullScreen');
+            modalJs.container.classList.remove('fullScreen');
+            modalReact.container.classList.remove('fullScreen');
+
+            modalHtml.modal.style.display = "none";
+            modalSass.modal.style.display = "none";
+            modalJs.modal.style.display = "none";
+            modalReact.modal.style.display = "none";
         });
     };
 
 
-    /* HTML Modal */
-    const modalHtmlContainer = document.querySelector('.modal-html-container');
-    const htmlIcon = document.querySelector('.skills-html');
-    const htmlModal = document.querySelector('.skills-html-modal');
-
-    htmlIcon.addEventListener('click', function (e) {
-        modalHtmlContainer.classList.add('fullScreen');
-        htmlModal.style.display = "block";
-    });
-
-
-    /* SASS Modal */
-    const modalSassContainer = document.querySelector('.modal-sass-container');
-    const sassIcon = document.querySelector('.skills-sass');
-    const sassModal = document.querySelector('.skills-sass-modal');
-
-    sassIcon.addEventListener('click', function (e) {
-        modalSassContainer.classList.add('fullScreen');
-        sassModal.style.display = "block";
-    })
-
-    /* JS Modal  */
-    const modalJsContainer = document.querySelector('.modal-js-container');
-    const jsModal = document.querySelector('.skills-js-modal');
-    const jsIcon = document.querySelector('.skills-js');
-
-    jsIcon.addEventListener('click', function (e) {
-        modalJsContainer.classList.add('fullScreen');
-        jsModal.style.display = "block";
-    })
-
-
-    /* React Modal */
-    const modalReactContainer = document.querySelector('.modal-react-container');
-    const reactModal = document.querySelector('.skills-react-modal');
-    const reactIcon = document.querySelector('.skills-react');
-
-    reactIcon.addEventListener('click', function (e) {
-        modalReactContainer.classList.add('fullScreen');
-        reactModal.style.display = "block";
-    });
-
-
-
-
     /* DRAGGING MODAL */
 
-    dragModal(document.querySelector('.skills-html-modal'));
-    dragModal(document.querySelector('.skills-sass-modal'));
-    dragModal(document.querySelector('.skills-js-modal'));
-    dragModal(document.querySelector('.skills-react-modal'));
+    dragModal('.skills-html-modal');
+    dragModal('.skills-sass-modal');
+    dragModal('.skills-js-modal');
+    dragModal('.skills-react-modal');
 
 
-    function dragModal(element) {
+    function dragModal(element_class) {
         /* początkowe wartości na 0 */
         var pos1 = 0,
             pos2 = 0,
             pos3 = 0,
-            pos4 = 0;
+            pos4 = 0,
+            element = document.querySelector(element_class);
+
+        
 
         /* Wywolaj sprawdzanie na wcisniecie myszki na naglowku */
         element.querySelector('.skills-modal-header').onmousedown = dragMouseDown;
