@@ -200,13 +200,12 @@ body{
     font-size: 16px;
     background: #f4f4f4;
     position: absolute;
-    left: 30%;
-    right: 30%;
-    top: 25%;
-    padding: 20px;
+    z-index: 9;     
 }
 
 .skills-modal-header {
+    padding: 10px;
+    cursor: move;
     margin-bottom: 20px;
     border-bottom: 1px solid #282e34;
 }
@@ -218,6 +217,7 @@ body{
 }
 
 .skills-modal-content {
+    padding: 0px 15px 20px 15px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -229,9 +229,8 @@ body{
 }
 
 .skills-modal-content-buttons a {
-    display: inline-block;
     cursor: pointer;
-    border: 1px solid;
+    border: 3px solid #fe7f00;
     padding: 10px;
     background: #282e34;
     color: #f4f4f4;
@@ -243,9 +242,6 @@ body{
         font-size: 16px;
         background: #f4f4f4;
         position: absolute;
-        left: 10%;
-        right: 10%;
-        top: 10%;
     }
     .skills-modal-header-exit {
         position: absolute;
