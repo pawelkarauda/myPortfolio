@@ -1,0 +1,49 @@
+*
+    margin: 0
+    padding: 0
+
+body
+    font-family: 'Prompt', sans-serif
+    margin: auto
+
+.container 
+    display: block
+    margin-left: auto
+    margin-right: auto
+    max-width: 990px
+    width: 100%
+
+
+.row 
+    margin-left: -10px
+    margin-right: -10px
+
+
+.row:before,
+.row:after 
+    content: ''
+    display: table
+    clear: both
+
+
+.col2
+    width: 50%
+    float: left
+
+
+.col4 
+    width: 25%
+    float: left
+ 
+
+.col3 
+    width: 33%
+    float: left
+ 
+
+ 
+@media (max-width: 767px) 
+    [class*="col"] 
+        width: 100%
+    
+

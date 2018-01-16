@@ -1,0 +1,79 @@
+.skills-row 
+    font-size: 100px
+
+
+
+.skills-row span 
+    cursor: pointer
+    color: inherit
+
+
+.skills-row span:hover 
+    color:  #fe7f00
+    transition: all .5s ease-out
+
+
+
+.fullScreen 
+    position: fixed
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    z-index: 1
+    background: rgba(10, 1, 1, 0.9)
+
+
+
+.skills-modal 
+    display: none
+    font-size: 16px
+    background: #f4f4f4
+    position: absolute
+    z-index: 9
+
+
+.skills-modal-header 
+    padding: 10px
+    cursor: move
+    margin-bottom: 20px
+    border-bottom: 1px solid #282e34
+
+
+.skills-modal-header-exit 
+    position: absolute
+    left: 96%
+    top: 1%
+
+
+.skills-modal-content 
+    padding: 0px 15px 20px 15px 
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+
+.skills-modal-content-buttons 
+    margin-top: 30px
+
+
+.skills-modal-content-buttons a 
+    cursor: pointer
+    border: 3px solid #fe7f00
+    padding: 10px
+    background: #282e34
+    color: #f4f4f4
+
+
+@media (max-width: 768px) 
+    .skills-modal 
+        display: none
+        font-size: 16px
+        background: #f4f4f4
+        position: absolute
+    
+    .skills-modal-header-exit 
+        position: absolute
+        left: 95%
+        top: 1%

@@ -33,9 +33,10 @@ module.exports = {
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
-      }
-    ]
+      }]
   },
+
+
   plugins: [
     new ExtractTextPlugin({
         filename: '[name].bundle.css'
